@@ -29,5 +29,7 @@ namespace MVDEMO.Models
         {
             return new ApplicationDbContext();
         }
+
+        private DbSet<MovieDb> Movies { get; set; }
     }
 }
