@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
-using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
@@ -15,42 +11,42 @@ namespace MVDEMO.Controllers
 {
     public class MoviesController : ApiController
     {
-        public ApplicationDbContext db = new ApplicationDbContext();
-        
+        private MovieDBContext db = new MovieDBContext();
+
         // GET: api/Movies
-        public IQueryable<Movies> GetMovies()
+        public IQueryable<MovieDb> GetMovies()
         {
             return db.Movies;
         }
 
         // GET: api/Movies/5
-        [ResponseType(typeof(Movies))]
-        public async Task<IHttpActionResult> GetMovies(int id)
+        [ResponseType(typeof(MovieDb))]
+        public async Task<IHttpActionResult> GetMovieDb(int id)
         {
-            Movies movies = await db.Movies.FindAsync(id);
-            if (movies == null)
+            MovieDb movieDb = await db.Movies.FindAsync(id);
+            if (movieDb == null)
             {
                 return NotFound();
             }
 
-            return Ok(movies);
+            return Ok(movieDb);
         }
 
         // PUT: api/Movies/5
         [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> PutMovies(int id, Movies movies)
+        public async Task<IHttpActionResult> PutMovieDb(int id, MovieDb movieDb)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != movies.ID)
+            if (id != movieDb.ID)
             {
                 return BadRequest();
             }
 
-            db.Entry(movies).State = EntityState.Modified;
+            db.Entry(movieDb).State = EntityState.Modified;
 
             try
             {
@@ -58,7 +54,7 @@ namespace MVDEMO.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!MoviesExists(id))
+                if (!MovieDbExists(id))
                 {
                     return NotFound();
                 }
@@ -72,34 +68,34 @@ namespace MVDEMO.Controllers
         }
 
         // POST: api/Movies
-        [ResponseType(typeof(Movies))]
-        public async Task<IHttpActionResult> PostMovies(Movies movies)
+        [ResponseType(typeof(MovieDb))]
+        public async Task<IHttpActionResult> PostMovieDb(MovieDb movieDb)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.Movies.Add(movies);
+            db.Movies.Add(movieDb);
             await db.SaveChangesAsync();
 
-            return CreatedAtRoute("DefaultApi", new { id = movies.ID }, movies);
+            return CreatedAtRoute("DefaultApi", new { id = movieDb.ID }, movieDb);
         }
 
         // DELETE: api/Movies/5
-        [ResponseType(typeof(Movies))]
-        public async Task<IHttpActionResult> DeleteMovies(int id)
+        [ResponseType(typeof(MovieDb))]
+        public async Task<IHttpActionResult> DeleteMovieDb(int id)
         {
-            Movies movies = await db.Movies.FindAsync(id);
-            if (movies == null)
+            MovieDb movieDb = await db.Movies.FindAsync(id);
+            if (movieDb == null)
             {
                 return NotFound();
             }
 
-            db.Movies.Remove(movies);
+            db.Movies.Remove(movieDb);
             await db.SaveChangesAsync();
 
-            return Ok(movies);
+            return Ok(movieDb);
         }
 
         protected override void Dispose(bool disposing)
@@ -111,9 +107,9 @@ namespace MVDEMO.Controllers
             base.Dispose(disposing);
         }
 
-        private bool MoviesExists(int id)
+        private bool MovieDbExists(int id)
         {
-           return db.Movies.Count(e => e.ID == id) > 0;
+            return db.Movies.Count(e => e.ID == id) > 0;
         }
     }
 }
