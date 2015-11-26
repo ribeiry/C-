@@ -66,6 +66,8 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Lojinha.aspx" />
+    <Content Include="Manutencao.aspx" />
     <Content Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -82,6 +84,20 @@
   <ItemGroup>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Lojinha.aspx.cs">
+      <DependentUpon>Lojinha.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Lojinha.aspx.designer.cs">
+      <DependentUpon>Lojinha.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Manutencao.aspx.cs">
+      <DependentUpon>Manutencao.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Manutencao.aspx.designer.cs">
+      <DependentUpon>Manutencao.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Default.aspx.cs">
