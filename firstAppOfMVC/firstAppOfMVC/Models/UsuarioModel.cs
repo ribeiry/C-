@@ -6,83 +6,21 @@ namespace firstAppOfMVC.Models
 {
     public class UsuarioModel
     {
-        
-        [StringLength(50, ErrorMessage = "O campo Nome permite no maximo 50 caracteres")]
-        private string nome;
+        [DisplayName("Código")]
         [Required]
-        private string sobrenome;
-        private string endereco;
-        [StringLength(50)]
-        [Required(ErrorMessage ="Informe o Email")]
-        [RegularExpression(@"\w+([-+.']*@\w+([-.]\w+)*\.\w+([-.]\w+)*",ErrorMessage ="Email Inválido")]
-        private string email;
-        [DataType(DataType.Date)]
-        private DateTime nascimento;
-
+        public int id { get; set; }
+        [StringLength(50, ErrorMessage = "O campo Nome permite no maximo 50 caracteres")]
         [DisplayName("Primeiro Nome")]
-        public string Nome
-        {
-            get
-            {
-                return nome;
-            }
+        public string nome { get; set; }
+        [Required]
+        public string sobrenome { get; set; }
+        public string endereco { get; set; }
+        [StringLength(50)]
+        [Required(ErrorMessage = "Informe o Email")]
+        [EmailAddress]
+        public string email { get; set; }
+        [DataType(DataType.Date)]
+        public DateTime nascimento { get; set; }
 
-            set
-            {
-                nome = value;
-            }
-        }
-
-        public string Sobrenome
-        {
-            get
-            {
-                return sobrenome;
-            }
-
-            set
-            {
-                sobrenome = value;
-            }
-        }
-
-        public string Endereco
-        {
-            get
-            {
-                return endereco;
-            }
-
-            set
-            {
-                endereco = value;
-            }
-        }
-
-        public string Email
-        {
-            get
-            {
-                return email;
-            }
-
-            set
-            {
-                email = value;
-            }
-        }
-
-        public DateTime Nascimento
-        {
-            get
-            {
-                return nascimento;
-            }
-
-            set
-            {
-                nascimento = value;
-            }
-        }
-    }
+     }
 }

@@ -251,6 +251,7 @@
     <Content Include="Views\Usuario\DeletaUsuario.cshtml" />
     <Content Include="Views\Usuario\AdicionaUsuario.cshtml" />
     <Content Include="Views\Usuario\AtualizaUsuario.cshtml" />
+    <Content Include="Views\Usuario\Detalhes.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

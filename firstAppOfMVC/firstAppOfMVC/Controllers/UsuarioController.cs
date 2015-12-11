@@ -17,10 +17,14 @@ namespace firstAppOfMVC.Controllers
         {
             return View();
         }
-        public ActionResult AtualizaUsuario()
+        public ActionResult AtualizaUsuario(int id)
         {
 
-           return View();
+            return View(_usuarios.GetUsuario(id));
+        }
+        public ActionResult Detalhes(int id)
+        {
+            return View(_usuarios.GetUsuario(id));
         }
         [HttpPost]
         public ActionResult AtualizaUsuario(UsuarioModel _usuario)
@@ -39,12 +43,12 @@ namespace firstAppOfMVC.Controllers
 
 
         }
-        public ViewResult DeletaUsuario(string email)
+        public ViewResult DeletaUsuario(int id)
         {
-            return View(_usuarios.GetUsuario(email));
+            return View(_usuarios.GetUsuario(id));
         }
         [HttpPost]
-        public RedirectToRouteResult DeletaUsuario(string id,FormCollection collection)
+        public RedirectToRouteResult DeletaUsuario(int id,FormCollection collection)
         {
             _usuarios.DeletarUsuario(id);
             return RedirectToAction("Index");
